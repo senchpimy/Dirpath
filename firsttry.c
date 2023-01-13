@@ -56,12 +56,6 @@ int main() {
 		break;
 	}
 }
-    for (i = 0; i < strlen(cwd); i++) {
-	if (cwd[i] == '/') {
-		count++;
-		printf("%i \n",i);
-	}
-    }
     printf("%s\n", cwd);
     return 0;
 }

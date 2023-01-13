@@ -2,10 +2,13 @@
 #include <string.h>
 #include <unistd.h>
 
+char HOME[]="~";
+
 int main() {
     char path[1024];
     char login[256];
     getcwd(path, sizeof(path));
+
     if (strlen(path)==1) {
 	printf("/\n");
 	return 0;
@@ -20,19 +23,28 @@ int main() {
     }
 
     getlogin_r(login, sizeof(login));
-
     if (strcmp(login, splited[1]) == 0) {
-        splited[0] = "~";
-    }
-
-    for (int j = 1; j < i-1; j++) {
+        splited[1] = HOME;
+    for (int j = 2; j < i-1; j++) {
         splited[j][2] = '\0';
     }
 
-    for (int j = 0; j < i - 1 ; j++) {
+    for (int j = 1; j < i - 1 ; j++) {
         printf("%s/", splited[j]);
     }
     printf("%s\n", splited[i - 1]);
     return 0;
+    }else {
+    for (int j = 2; j < i-1; j++) {
+        splited[j][2] = '\0';
+    }
+
+    for (int j = 1; j < i - 1 ; j++) {
+        printf("%s/", splited[j]);
+    }
+    printf("%s\n", splited[i - 1]);
+    return 0;
+
+    }
 }
 
